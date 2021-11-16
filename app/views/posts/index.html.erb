@@ -11,12 +11,6 @@
 <div class="container">
   <table class="table table-striped">
     <thead>
-      <style>
-        tbody.tab
-        {
-          tab-size: 10;
-        }
-      </style>
     </thead>
   
     <tbody>
@@ -28,7 +22,11 @@
             </td>
             <td><%= post.content %></td>
             <td><%= User.find(post.user_id).email %></td>
-            <td><%= link_to 'Reply', new_post_path(@post, :parent_id => post.id) %></td>
+            <td>
+              <% if current_user %>
+                <%= link_to 'Reply', new_post_path(@post, :parent_id => post.id) %>
+              <% end %>
+            </td>
             <td>
               <% if current_user && current_user.id == post.user_id %>
                 <%= link_to 'Edit', edit_post_path(post) %>
@@ -49,7 +47,11 @@
                     <%= post.content %>
                 </td>
                 <td><%= User.find(post.user_id).email %></td>
-                <td><%= link_to 'Reply', new_post_path(@post, :parent_id => post.parent_id) %></td>
+                <td>
+                  <% if current_user %>
+                    <%= link_to 'Reply', new_post_path(@post, :parent_id => post.parent_id) %>
+                  <% end %>
+                </td>
                 <td>
                   <% if current_user && current_user.id == post.user_id %>
                     <%= link_to 'Edit', edit_post_path(post) %>
