@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is Stephen Bock's entry for the HP Interview Assignment
 
-Things you may want to cover:
+In order to locally run this project you will need to checkout the repo
+and run the following commands to install the gems:
 
-* Ruby version
+gem install bundler -v 2.2.17
+bundle _2.2.17_ config set --local without 'production'
+bundle _2.2.17_ install
 
-* System dependencies
+Then migrate the database with:
+rails db:migrate
 
-* Configuration
+Then use this command to start the server:
+rails server
 
-* Database creation
+From here you can create a new user by using the 'Register' button
+in the upper left of the navbar.  The login process uses Devise so it
+stores users email/password in the backend database and uses that
+to authenticate login attempts.  The email does not have to be
+a valid email, but must be formatted like one.
 
-* Database initialization
+Create a new post after logging in by hitting the "New Post" button
+in the upper left.  Posts have a maximum character limit of 1000.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is currently (as of writing this README) running online
+at hp-hire-me.herokuapp.com
