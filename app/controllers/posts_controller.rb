@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new :user_id => current_user.id
+    @post = Post.new :user_id => current_user.id, :parent_id => params[:parent_id]
   end
 
   # GET /posts/1/edit
